@@ -52,6 +52,15 @@
             border-radius: 5px;
             border-right: 3px solid #27ae60;
         }
+        .question.hidden {
+            display: none;
+        }
+        .section {
+            margin: 20px 0;
+        }
+        .section.hidden {
+            display: none;
+        }
         .options {
             margin: 10px 0;
             padding-right: 20px;
@@ -137,6 +146,7 @@
             font-family: 'Tahoma', 'Arial', sans-serif;
             resize: vertical;
             direction: rtl;
+            box-sizing: border-box;
         }
         input[type="radio"], input[type="checkbox"] {
             margin-left: 8px;
@@ -183,6 +193,13 @@
             transition: width 0.3s ease;
             width: 0%;
         }
+        .course-info {
+            background-color: #d4edda;
+            padding: 15px;
+            border-radius: 5px;
+            border-right: 4px solid #28a745;
+            margin: 15px 0;
+        }
     </style>
 </head>
 <body>
@@ -196,13 +213,13 @@
 
             <div class="intro">
                 <p><strong>دانش‌آموز/والدین گرامی،</strong></p>
-                <p>از اینکه در طرح مشاوره تحصیلی یکساله ۱۴۰۳ همراه ما بودید سپاسگزاریم. هدف از این نظرسنجی، ارزیابی دقیق میزان رضایت شما از خدمات ارائه شده و شناسایی نقاط قوت و ضعف سیستم است تا بتوانیم در آینده خدمات بهتری ارائه دهیم. پاسخ‌های شما کاملاً محرمانه تلقی شده و صرفاً جهت بهبود کیفیت برنامه‌ها استفاده خواهد شد. لطفاً با دقت و صداقت به سوالات پاسخ دهید. تکمیل این پرسشنامه حدود ۱۰-۱۵ دقیقه زمان خواهد برد.</p>
+                <p>از اینکه در طرح مشاوره تحصیلی یکساله ۱۴۰۳ همراه ما بودید سپاسگزاریم. هدف از این نظرسنجی، ارزیابی دقیق میزان رضایت شما از خدمات ارائه شده و شناسایی نقاط قوت و ضعف سیستم است تا بتوانیم در آینده خدمات بهتری ارائه دهیم. پاسخ‌های شما کاملاً محرمانه تلقی شده و صرفاً جهت بهبود کیفیت برنامه‌ها استفاده خواهد شد. لطفاً با دقت و صداقت به سوالات پاسخ دهید.</p>
                 <p><strong>پیشاپیش از همکاری شما سپاسگزاریم.</strong></p>
             </div>
 
             <hr>
 
-            <h2>بخش اول: اطلاعات عمومی (برای تفکیک پاسخ‌دهندگان)</h2>
+            <h2>بخش اول: اطلاعات عمومی</h2>
 
             <div class="question form-group">
                 <strong>۱. شما به عنوان چه کسی در این نظرسنجی شرکت می‌کنید؟ <span class="required">*</span></strong>
@@ -236,722 +253,656 @@
                 </div>
             </div>
 
+            <div class="course-info hidden" id="courseInfo">
+                <p id="courseDescription"></p>
+            </div>
+
             <hr>
 
-            <h2>بخش دوم: ارزیابی رضایت از "مشاور تحصیلی"</h2>
-            
-            <div class="important">
-                <strong>توجه:</strong> در این بخش، تمرکز بر نقش اصلی مشاور یعنی "برنامه‌ریزی فردی" و راهبری کلان است. لطفاً با در نظر گرفتن محدودیت‌های زمانی جلسات (۴۰ دقیقه هر دو هفته برای دانش‌آموز قوی / ۲۰ دقیقه هر هفته برای دانش‌آموز ضعیف) به سوالات پاسخ دهید.
-            </div>
+            <!-- بخش دوم: مشاور تحصیلی -->
+            <div class="section" id="section-advisor">
+                <h2>بخش دوم: ارزیابی رضایت از "مشاور تحصیلی"</h2>
+                
+                <div class="important">
+                    <strong>توجه:</strong> در این بخش، تمرکز بر نقش اصلی مشاور یعنی "برنامه‌ریزی فردی" و راهبری کلان است. لطفاً با در نظر گرفتن محدودیت‌های زمانی جلسات (۴۰ دقیقه هر دو هفته برای دانش‌آموز قوی / ۲۰ دقیقه هر هفته برای دانش‌آموز ضعیف) به سوالات پاسخ دهید.
+                </div>
 
-            <div class="scale">
-                <strong>مقیاس پاسخ‌دهی برای سوالات این بخش (و بخش‌های بعدی):</strong>
-                <div class="scale-item">۵- کاملاً راضی / خیلی زیاد</div>
-                <div class="scale-item">۴- راضی / زیاد</div>
-                <div class="scale-item">۳- نظری ندارم / متوسط</div>
-                <div class="scale-item">۲- ناراضی / کم</div>
-                <div class="scale-item">۱- کاملاً ناراضی / خیلی کم</div>
-                <div class="scale-item">۰- شامل حال من/فرزندم نمی‌شود یا از این خدمت استفاده نکرده‌ام</div>
-            </div>
+                <div class="scale">
+                    <strong>مقیاس پاسخ‌دهی برای سوالات این بخش (و بخش‌های بعدی):</strong>
+                    <div class="scale-item">۵- کاملاً راضی / خیلی زیاد</div>
+                    <div class="scale-item">۴- راضی / زیاد</div>
+                    <div class="scale-item">۳- نظری ندارم / متوسط</div>
+                    <div class="scale-item">۲- ناراضی / کم</div>
+                    <div class="scale-item">۱- کاملاً ناراضی / خیلی کم</div>
+                </div>
 
-            <div class="question form-group">
-                <strong>۳. میزان رضایت شما از کیفیت "برنامه‌ریزی فردی" ارائه شده توسط مشاور تحصیلی چقدر است؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q3_5" name="q3_individual_planning" value="5" required>
-                        <label for="q3_5">۵<br>کاملاً راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q3_4" name="q3_individual_planning" value="4" required>
-                        <label for="q3_4">۴<br>راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q3_3" name="q3_individual_planning" value="3" required>
-                        <label for="q3_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q3_2" name="q3_individual_planning" value="2" required>
-                        <label for="q3_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q3_1" name="q3_individual_planning" value="1" required>
-                        <label for="q3_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q3_0" name="q3_individual_planning" value="0" required>
-                        <label for="q3_0">۰<br>شامل حالم نمی‌شود</label>
+                <div class="question form-group">
+                    <strong>۳. میزان رضایت شما از کیفیت "برنامه‌ریزی فردی" ارائه شده توسط مشاور تحصیلی چقدر است؟ <span class="required">*</span></strong>
+                    <div class="scale-options">
+                        <div class="scale-option">
+                            <input type="radio" id="q3_5" name="q3_individual_planning" value="5" required>
+                            <label for="q3_5">۵<br>کاملاً راضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q3_4" name="q3_individual_planning" value="4" required>
+                            <label for="q3_4">۴<br>راضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q3_3" name="q3_individual_planning" value="3" required>
+                            <label for="q3_3">۳<br>متوسط</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q3_2" name="q3_individual_planning" value="2" required>
+                            <label for="q3_2">۲<br>ناراضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q3_1" name="q3_individual_planning" value="1" required>
+                            <label for="q3_1">۱<br>کاملاً ناراضی</label>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="question form-group">
-                <strong>۴. میزان رضایت شما از تخصص و تسلط مشاور تحصیلی در ارائه راهکارهای متناسب با شرایط شما/فرزندتان چقدر است؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q4_5" name="q4_advisor_expertise" value="5" required>
-                        <label for="q4_5">۵<br>کاملاً راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q4_4" name="q4_advisor_expertise" value="4" required>
-                        <label for="q4_4">۴<br>راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q4_3" name="q4_advisor_expertise" value="3" required>
-                        <label for="q4_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q4_2" name="q4_advisor_expertise" value="2" required>
-                        <label for="q4_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q4_1" name="q4_advisor_expertise" value="1" required>
-                        <label for="q4_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q4_0" name="q4_advisor_expertise" value="0" required>
-                        <label for="q4_0">۰<br>شامل حالم نمی‌شود</label>
+                <div class="question form-group">
+                    <strong>۴. میزان رضایت شما از تخصص و تسلط مشاور تحصیلی در ارائه راهکارهای متناسب با شرایط شما/فرزندتان چقدر است؟ <span class="required">*</span></strong>
+                    <div class="scale-options">
+                        <div class="scale-option">
+                            <input type="radio" id="q4_5" name="q4_advisor_expertise" value="5" required>
+                            <label for="q4_5">۵<br>کاملاً راضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q4_4" name="q4_advisor_expertise" value="4" required>
+                            <label for="q4_4">۴<br>راضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q4_3" name="q4_advisor_expertise" value="3" required>
+                            <label for="q4_3">۳<br>متوسط</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q4_2" name="q4_advisor_expertise" value="2" required>
+                            <label for="q4_2">۲<br>ناراضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q4_1" name="q4_advisor_expertise" value="1" required>
+                            <label for="q4_1">۱<br>کاملاً ناراضی</label>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="question form-group">
-                <strong>۵. میزان رضایت شما از نحوه پاسخگویی مشاور به سوالات و ابهامات کلیدی شما در طول جلسات مشاوره چقدر است؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q5_5" name="q5_advisor_response" value="5" required>
-                        <label for="q5_5">۵<br>کاملاً راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q5_4" name="q5_advisor_response" value="4" required>
-                        <label for="q5_4">۴<br>راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q5_3" name="q5_advisor_response" value="3" required>
-                        <label for="q5_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q5_2" name="q5_advisor_response" value="2" required>
-                        <label for="q5_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q5_1" name="q5_advisor_response" value="1" required>
-                        <label for="q5_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q5_0" name="q5_advisor_response" value="0" required>
-                        <label for="q5_0">۰<br>شامل حالم نمی‌شود</label>
+                <div class="question form-group">
+                    <strong>۵. میزان رضایت شما از نحوه پاسخگویی مشاور به سوالات و ابهامات کلیدی شما در طول جلسات مشاوره چقدر است؟ <span class="required">*</span></strong>
+                    <div class="scale-options">
+                        <div class="scale-option">
+                            <input type="radio" id="q5_5" name="q5_advisor_response" value="5" required>
+                            <label for="q5_5">۵<br>کاملاً راضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q5_4" name="q5_advisor_response" value="4" required>
+                            <label for="q5_4">۴<br>راضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q5_3" name="q5_advisor_response" value="3" required>
+                            <label for="q5_3">۳<br>متوسط</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q5_2" name="q5_advisor_response" value="2" required>
+                            <label for="q5_2">۲<br>ناراضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q5_1" name="q5_advisor_response" value="1" required>
+                            <label for="q5_1">۱<br>کاملاً ناراضی</label>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="question form-group">
-                <strong>۶. به طور کلی، از عملکرد "مشاور تحصیلی" خود (با در نظر گرفتن نقش و محدودیت‌های زمانی ایشان) چقدر رضایت دارید؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q6_5" name="q6_advisor_overall" value="5" required>
-                        <label for="q6_5">۵<br>کاملاً راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q6_4" name="q6_advisor_overall" value="4" required>
-                        <label for="q6_4">۴<br>راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q6_3" name="q6_advisor_overall" value="3" required>
-                        <label for="q6_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q6_2" name="q6_advisor_overall" value="2" required>
-                        <label for="q6_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q6_1" name="q6_advisor_overall" value="1" required>
-                        <label for="q6_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q6_0" name="q6_advisor_overall" value="0" required>
-                        <label for="q6_0">۰<br>شامل حالم نمی‌شود</label>
+                <div class="question form-group">
+                    <strong>۶. به طور کلی، از عملکرد "مشاور تحصیلی" خود (با در نظر گرفتن نقش و محدودیت‌های زمانی ایشان) چقدر رضایت دارید؟ <span class="required">*</span></strong>
+                    <div class="scale-options">
+                        <div class="scale-option">
+                            <input type="radio" id="q6_5" name="q6_advisor_overall" value="5" required>
+                            <label for="q6_5">۵<br>کاملاً راضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q6_4" name="q6_advisor_overall" value="4" required>
+                            <label for="q6_4">۴<br>راضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q6_3" name="q6_advisor_overall" value="3" required>
+                            <label for="q6_3">۳<br>متوسط</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q6_2" name="q6_advisor_overall" value="2" required>
+                            <label for="q6_2">۲<br>ناراضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q6_1" name="q6_advisor_overall" value="1" required>
+                            <label for="q6_1">۱<br>کاملاً ناراضی</label>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <hr>
 
-            <h2>بخش سوم: ارزیابی رضایت از "همیار"</h2>
-            
-            <div class="important">
-                <strong>توجه:</strong> همیار مسئول پیگیری‌های روزانه (چک آنلاین)، تماس‌های هفتگی (۲۰ دقیقه)، انتقال اطلاعات به مشاور و انجام برخی تحلیل‌های اولیه بوده است.
-            </div>
+            <!-- بخش سوم: همیار -->
+            <div class="section" id="section-assistant">
+                <h2>بخش سوم: ارزیابی رضایت از "همیار"</h2>
+                
+                <div class="important">
+                    <strong>توجه:</strong> همیار مسئول پیگیری‌های روزانه (چک آنلاین)، تماس‌های هفتگی (۲۰ دقیقه)، انتقال اطلاعات به مشاور و انجام برخی تحلیل‌های اولیه بوده است.
+                </div>
 
-            <div class="question form-group">
-                <strong>۷. میزان رضایت شما از "چک آنلاین شبانه" که توسط همیار انجام می‌شد، چقدر است؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q7_5" name="q7_online_check" value="5" required>
-                        <label for="q7_5">۵<br>کاملاً راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q7_4" name="q7_online_check" value="4" required>
-                        <label for="q7_4">۴<br>راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q7_3" name="q7_online_check" value="3" required>
-                        <label for="q7_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q7_2" name="q7_online_check" value="2" required>
-                        <label for="q7_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q7_1" name="q7_online_check" value="1" required>
-                        <label for="q7_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q7_0" name="q7_online_check" value="0" required>
-                        <label for="q7_0">۰<br>شامل حالم نمی‌شود</label>
+                <div class="question form-group">
+                    <strong>۷. میزان رضایت شما از "چک آنلاین شبانه" که توسط همیار انجام می‌شد، چقدر است؟ <span class="required">*</span></strong>
+                    <div class="scale-options">
+                        <div class="scale-option">
+                            <input type="radio" id="q7_5" name="q7_online_check" value="5" required>
+                            <label for="q7_5">۵<br>کاملاً راضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q7_4" name="q7_online_check" value="4" required>
+                            <label for="q7_4">۴<br>راضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q7_3" name="q7_online_check" value="3" required>
+                            <label for="q7_3">۳<br>متوسط</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q7_2" name="q7_online_check" value="2" required>
+                            <label for="q7_2">۲<br>ناراضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q7_1" name="q7_online_check" value="1" required>
+                            <label for="q7_1">۱<br>کاملاً ناراضی</label>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="question form-group">
-                <strong>۸. میزان رضایت شما از کیفیت و مفید بودن "تماس‌های ۲۰ دقیقه‌ای هفتگی" با همیار چقدر است؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q8_5" name="q8_weekly_calls" value="5" required>
-                        <label for="q8_5">۵<br>کاملاً راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q8_4" name="q8_weekly_calls" value="4" required>
-                        <label for="q8_4">۴<br>راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q8_3" name="q8_weekly_calls" value="3" required>
-                        <label for="q8_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q8_2" name="q8_weekly_calls" value="2" required>
-                        <label for="q8_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q8_1" name="q8_weekly_calls" value="1" required>
-                        <label for="q8_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q8_0" name="q8_weekly_calls" value="0" required>
-                        <label for="q8_0">۰<br>شامل حالم نمی‌شود</label>
+                <div class="question form-group">
+                    <strong>۸. میزان رضایت شما از کیفیت و مفید بودن "تماس‌های ۲۰ دقیقه‌ای هفتگی" با همیار چقدر است؟ <span class="required">*</span></strong>
+                    <div class="scale-options">
+                        <div class="scale-option">
+                            <input type="radio" id="q8_5" name="q8_weekly_calls" value="5" required>
+                            <label for="q8_5">۵<br>کاملاً راضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q8_4" name="q8_weekly_calls" value="4" required>
+                            <label for="q8_4">۴<br>راضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q8_3" name="q8_weekly_calls" value="3" required>
+                            <label for="q8_3">۳<br>متوسط</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q8_2" name="q8_weekly_calls" value="2" required>
+                            <label for="q8_2">۲<br>ناراضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q8_1" name="q8_weekly_calls" value="1" required>
+                            <label for="q8_1">۱<br>کاملاً ناراضی</label>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="question form-group">
-                <strong>۹. میزان رضایت شما از سرعت و دقت همیار در پاسخگویی به سوالات و پیگیری امور محوله چقدر است؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q9_5" name="q9_assistant_response" value="5" required>
-                        <label for="q9_5">۵<br>کاملاً راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q9_4" name="q9_assistant_response" value="4" required>
-                        <label for="q9_4">۴<br>راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q9_3" name="q9_assistant_response" value="3" required>
-                        <label for="q9_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q9_2" name="q9_assistant_response" value="2" required>
-                        <label for="q9_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q9_1" name="q9_assistant_response" value="1" required>
-                        <label for="q9_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q9_0" name="q9_assistant_response" value="0" required>
-                        <label for="q9_0">۰<br>شامل حالم نمی‌شود</label>
+                <div class="question form-group">
+                    <strong>۹. میزان رضایت شما از سرعت و دقت همیار در پاسخگویی به سوالات و پیگیری امور محوله چقدر است؟ <span class="required">*</span></strong>
+                    <div class="scale-options">
+                        <div class="scale-option">
+                            <input type="radio" id="q9_5" name="q9_assistant_response" value="5" required>
+                            <label for="q9_5">۵<br>کاملاً راضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q9_4" name="q9_assistant_response" value="4" required>
+                            <label for="q9_4">۴<br>راضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q9_3" name="q9_assistant_response" value="3" required>
+                            <label for="q9_3">۳<br>متوسط</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q9_2" name="q9_assistant_response" value="2" required>
+                            <label for="q9_2">۲<br>ناراضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q9_1" name="q9_assistant_response" value="1" required>
+                            <label for="q9_1">۱<br>کاملاً ناراضی</label>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="question form-group">
-                <strong>۱۰. میزان رضایت شما از کیفیت "تحلیل برنامه/تست/آزمون" که توسط همیار (و تحت نظارت مشاور) انجام می‌شد، چقدر است؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q10_5" name="q10_analysis_quality" value="5" required>
-                        <label for="q10_5">۵<br>کاملاً راضی</label>
+                <div class="question form-group" id="q10-analysis">
+                    <strong>۱۰. میزان رضایت شما از کیفیت "تحلیل برنامه/تست/آزمون" که توسط همیار (و تحت نظارت مشاور) انجام می‌شد، چقدر است؟ <span class="required">*</span></strong>
+                    <div class="scale-options">
+                        <div class="scale-option">
+                            <input type="radio" id="q10_5" name="q10_analysis_quality" value="5" required>
+                            <label for="q10_5">۵<br>کاملاً راضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q10_4" name="q10_analysis_quality" value="4" required>
+                            <label for="q10_4">۴<br>راضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q10_3" name="q10_analysis_quality" value="3" required>
+                            <label for="q10_3">۳<br>متوسط</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q10_2" name="q10_analysis_quality" value="2" required>
+                            <label for="q10_2">۲<br>ناراضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q10_1" name="q10_analysis_quality" value="1" required>
+                            <label for="q10_1">۱<br>کاملاً ناراضی</label>
+                        </div>
                     </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q10_4" name="q10_analysis_quality" value="4" required>
-                        <label for="q10_4">۴<br>راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q10_3" name="q10_analysis_quality" value="3" required>
-                        <label for="q10_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q10_2" name="q10_analysis_quality" value="2" required>
-                        <label for="q10_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q10_1" name="q10_analysis_quality" value="1" required>
-                        <label for="q10_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q10_0" name="q10_analysis_quality" value="0" required>
-                        <label for="q10_0">۰<br>شامل حالم نمی‌شود</label>
-                    </div>
+                    <em class="basic-note">این سوال بیشتر برای دوره‌های پیشرفته و فوق پیشرفته مصداق دارد</em>
                 </div>
-                <em>این سوال بیشتر برای دوره‌های پیشرفته و فوق پیشرفته مصداق دارد</em>
-            </div>
 
-            <div class="question form-group">
-                <strong>۱۱. به طور کلی، از عملکرد "همیار" خود چقدر رضایت دارید؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q11_5" name="q11_assistant_overall" value="5" required>
-                        <label for="q11_5">۵<br>کاملاً راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q11_4" name="q11_assistant_overall" value="4" required>
-                        <label for="q11_4">۴<br>راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q11_3" name="q11_assistant_overall" value="3" required>
-                        <label for="q11_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q11_2" name="q11_assistant_overall" value="2" required>
-                        <label for="q11_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q11_1" name="q11_assistant_overall" value="1" required>
-                        <label for="q11_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q11_0" name="q11_assistant_overall" value="0" required>
-                        <label for="q11_0">۰<br>شامل حالم نمی‌شود</label>
+                <div class="question form-group">
+                    <strong>۱۱. به طور کلی، از عملکرد "همیار" خود چقدر رضایت دارید؟ <span class="required">*</span></strong>
+                    <div class="scale-options">
+                        <div class="scale-option">
+                            <input type="radio" id="q11_5" name="q11_assistant_overall" value="5" required>
+                            <label for="q11_5">۵<br>کاملاً راضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q11_4" name="q11_assistant_overall" value="4" required>
+                            <label for="q11_4">۴<br>راضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q11_3" name="q11_assistant_overall" value="3" required>
+                            <label for="q11_3">۳<br>متوسط</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q11_2" name="q11_assistant_overall" value="2" required>
+                            <label for="q11_2">۲<br>ناراضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q11_1" name="q11_assistant_overall" value="1" required>
+                            <label for="q11_1">۱<br>کاملاً ناراضی</label>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <hr>
 
-            <h2>بخش چهارم: ارزیابی رضایت از خدمات تخصصی (متناسب با دوره)</h2>
+            <!-- بخش چهارم: خدمات تخصصی -->
+            <div class="section" id="section-services">
+                <h2>بخش چهارم: ارزیابی رضایت از خدمات تخصصی</h2>
 
-            <div class="important">
-                <strong>توجه:</strong> لطفاً فقط به سوالات مربوط به خدماتی که در <strong>دوره ثبت‌نامی شما</strong> ارائه شده است، پاسخ دهید.
-            </div>
+                <!-- خدمات مشترک -->
+                <div class="subsection" id="common-services">
+                    <h3>خدمات مشترک:</h3>
 
-            <h3>الف) خدمات مشترک در همه دوره‌ها (یا با تفاوت جزئی):</h3>
+                    <div class="question form-group">
+                        <strong>۱۲. میزان رضایت شما از خدمت "آموزش و پیگیری" (که عمدتاً توسط همیار انجام می‌شد) چقدر است؟ <span class="required">*</span></strong>
+                        <div class="scale-options">
+                            <div class="scale-option">
+                                <input type="radio" id="q12_5" name="q12_education_followup" value="5" required>
+                                <label for="q12_5">۵<br>کاملاً راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q12_4" name="q12_education_followup" value="4" required>
+                                <label for="q12_4">۴<br>راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q12_3" name="q12_education_followup" value="3" required>
+                                <label for="q12_3">۳<br>متوسط</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q12_2" name="q12_education_followup" value="2" required>
+                                <label for="q12_2">۲<br>ناراضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q12_1" name="q12_education_followup" value="1" required>
+                                <label for="q12_1">۱<br>کاملاً ناراضی</label>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="question form-group">
-                <strong>۱۲. میزان رضایت شما از خدمت "آموزش و پیگیری" (که عمدتاً توسط همیار انجام می‌شد) چقدر است؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q12_5" name="q12_education_followup" value="5" required>
-                        <label for="q12_5">۵<br>کاملاً راضی</label>
+                    <div class="question form-group">
+                        <strong>۱۳. میزان رضایت شما از خدمت "اخبار و اطلاع رسانی" چقدر است؟ <span class="required">*</span></strong>
+                        <div class="scale-options">
+                            <div class="scale-option">
+                                <input type="radio" id="q13_5" name="q13_news_information" value="5" required>
+                                <label for="q13_5">۵<br>کاملاً راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q13_4" name="q13_news_information" value="4" required>
+                                <label for="q13_4">۴<br>راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q13_3" name="q13_news_information" value="3" required>
+                                <label for="q13_3">۳<br>متوسط</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q13_2" name="q13_news_information" value="2" required>
+                                <label for="q13_2">۲<br>ناراضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q13_1" name="q13_news_information" value="1" required>
+                                <label for="q13_1">۱<br>کاملاً ناراضی</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q12_4" name="q12_education_followup" value="4" required>
-                        <label for="q12_4">۴<br>راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q12_3" name="q12_education_followup" value="3" required>
-                        <label for="q12_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q12_2" name="q12_education_followup" value="2" required>
-                        <label for="q12_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q12_1" name="q12_education_followup" value="1" required>
-                        <label for="q12_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q12_0" name="q12_education_followup" value="0" required>
-                        <label for="q12_0">۰<br>شامل حالم نمی‌شود</label>
+
+                    <div class="question form-group">
+                        <strong>۱۴. میزان رضایت شما از خدمت "آزمون صحت سنجی" چقدر است؟ <span class="required">*</span></strong>
+                        <div class="scale-options">
+                            <div class="scale-option">
+                                <input type="radio" id="q14_5" name="q14_validation_test" value="5" required>
+                                <label for="q14_5">۵<br>کاملاً راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q14_4" name="q14_validation_test" value="4" required>
+                                <label for="q14_4">۴<br>راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q14_3" name="q14_validation_test" value="3" required>
+                                <label for="q14_3">۳<br>متوسط</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q14_2" name="q14_validation_test" value="2" required>
+                                <label for="q14_2">۲<br>ناراضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q14_1" name="q14_validation_test" value="1" required>
+                                <label for="q14_1">۱<br>کاملاً ناراضی</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="question form-group">
-                <strong>۱۳. میزان رضایت شما از خدمت "اخبار و اطلاع رسانی" چقدر است؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q13_5" name="q13_news_information" value="5" required>
-                        <label for="q13_5">۵<br>کاملاً راضی</label>
+                <!-- خدمات پیشرفته -->
+                <div class="subsection" id="advanced-services">
+                    <h3>خدمات دوره‌های پیشرفته و فوق پیشرفته:</h3>
+
+                    <div class="question form-group">
+                        <strong>۱۵. میزان رضایت شما از "آزمون جمع بندی مبحثی/ترکیبی" چقدر است؟ <span class="required">*</span></strong>
+                        <div class="scale-options">
+                            <div class="scale-option">
+                                <input type="radio" id="q15_5" name="q15_comprehensive_test" value="5" required>
+                                <label for="q15_5">۵<br>کاملاً راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q15_4" name="q15_comprehensive_test" value="4" required>
+                                <label for="q15_4">۴<br>راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q15_3" name="q15_comprehensive_test" value="3" required>
+                                <label for="q15_3">۳<br>متوسط</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q15_2" name="q15_comprehensive_test" value="2" required>
+                                <label for="q15_2">۲<br>ناراضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q15_1" name="q15_comprehensive_test" value="1" required>
+                                <label for="q15_1">۱<br>کاملاً ناراضی</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q13_4" name="q13_news_information" value="4" required>
-                        <label for="q13_4">۴<br>راضی</label>
+
+                    <div class="question form-group">
+                        <strong>۱۶. میزان رضایت شما از "گزارش پیشرفت و تحلیل عملکرد" چقدر است؟ <span class="required">*</span></strong>
+                        <div class="scale-options">
+                            <div class="scale-option">
+                                <input type="radio" id="q16_5" name="q16_progress_report" value="5" required>
+                                <label for="q16_5">۵<br>کاملاً راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q16_4" name="q16_progress_report" value="4" required>
+                                <label for="q16_4">۴<br>راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q16_3" name="q16_progress_report" value="3" required>
+                                <label for="q16_3">۳<br>متوسط</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q16_2" name="q16_progress_report" value="2" required>
+                                <label for="q16_2">۲<br>ناراضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q16_1" name="q16_progress_report" value="1" required>
+                                <label for="q16_1">۱<br>کاملاً ناراضی</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q13_3" name="q13_news_information" value="3" required>
-                        <label for="q13_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q13_2" name="q13_news_information" value="2" required>
-                        <label for="q13_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q13_1" name="q13_news_information" value="1" required>
-                        <label for="q13_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q13_0" name="q13_news_information" value="0" required>
-                        <label for="q13_0">۰<br>شامل حالم نمی‌شود</label>
+
+                    <div class="question form-group">
+                        <strong>۱۷. میزان رضایت شما از "هدفگذاری و جمع بندی اختصاصی" چقدر است؟ <span class="required">*</span></strong>
+                        <div class="scale-options">
+                            <div class="scale-option">
+                                <input type="radio" id="q17_5" name="q17_goal_setting" value="5" required>
+                                <label for="q17_5">۵<br>کاملاً راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q17_4" name="q17_goal_setting" value="4" required>
+                                <label for="q17_4">۴<br>راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q17_3" name="q17_goal_setting" value="3" required>
+                                <label for="q17_3">۳<br>متوسط</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q17_2" name="q17_goal_setting" value="2" required>
+                                <label for="q17_2">۲<br>ناراضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q17_1" name="q17_goal_setting" value="1" required>
+                                <label for="q17_1">۱<br>کاملاً ناراضی</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="question form-group">
-                <strong>۱۴. میزان رضایت شما از خدمت "آزمون صحت سنجی" چقدر است؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q14_5" name="q14_validation_test" value="5" required>
-                        <label for="q14_5">۵<br>کاملاً راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q14_4" name="q14_validation_test" value="4" required>
-                        <label for="q14_4">۴<br>راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q14_3" name="q14_validation_test" value="3" required>
-                        <label for="q14_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q14_2" name="q14_validation_test" value="2" required>
-                        <label for="q14_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q14_1" name="q14_validation_test" value="1" required>
-                        <label for="q14_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q14_0" name="q14_validation_test" value="0" required>
-                        <label for="q14_0">۰<br>شامل حالم نمی‌شود</label>
-                    </div>
-                </div>
-            </div>
+                <!-- خدمات فوق پیشرفته -->
+                <div class="subsection" id="expert-services">
+                    <h3>خدمات ویژه دوره فوق پیشرفته:</h3>
 
-            <h3>ب) خدمات ویژه دوره‌های "پیشرفته" و "فوق پیشرفته":</h3>
-            <em>اگر در دوره مقدماتی بوده‌اید، لطفاً گزینه "شامل حال من نمی‌شود" را انتخاب کنید.</em>
+                    <div class="question form-group">
+                        <strong>۱۸. میزان رضایت شما از "تست‌های روانشناختی" (در صورت ارجاع و انجام) چقدر است؟ <span class="required">*</span></strong>
+                        <div class="scale-options">
+                            <div class="scale-option">
+                                <input type="radio" id="q18_5" name="q18_psychological_tests" value="5" required>
+                                <label for="q18_5">۵<br>کاملاً راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q18_4" name="q18_psychological_tests" value="4" required>
+                                <label for="q18_4">۴<br>راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q18_3" name="q18_psychological_tests" value="3" required>
+                                <label for="q18_3">۳<br>متوسط</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q18_2" name="q18_psychological_tests" value="2" required>
+                                <label for="q18_2">۲<br>ناراضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q18_1" name="q18_psychological_tests" value="1" required>
+                                <label for="q18_1">۱<br>کاملاً ناراضی</label>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="question form-group">
-                <strong>۱۵. میزان رضایت شما از "آزمون جمع بندی مبحثی/ترکیبی" چقدر است؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q15_5" name="q15_comprehensive_test" value="5" required>
-                        <label for="q15_5">۵<br>کاملاً راضی</label>
+                    <div class="question form-group">
+                        <strong>۱۹. میزان رضایت شما از "کارگاه‌های آموزشی" چقدر است؟ <span class="required">*</span></strong>
+                        <div class="scale-options">
+                            <div class="scale-option">
+                                <input type="radio" id="q19_5" name="q19_educational_workshops" value="5" required>
+                                <label for="q19_5">۵<br>کاملاً راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q19_4" name="q19_educational_workshops" value="4" required>
+                                <label for="q19_4">۴<br>راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q19_3" name="q19_educational_workshops" value="3" required>
+                                <label for="q19_3">۳<br>متوسط</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q19_2" name="q19_educational_workshops" value="2" required>
+                                <label for="q19_2">۲<br>ناراضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q19_1" name="q19_educational_workshops" value="1" required>
+                                <label for="q19_1">۱<br>کاملاً ناراضی</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q15_4" name="q15_comprehensive_test" value="4" required>
-                        <label for="q15_4">۴<br>راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q15_3" name="q15_comprehensive_test" value="3" required>
-                        <label for="q15_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q15_2" name="q15_comprehensive_test" value="2" required>
-                        <label for="q15_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q15_1" name="q15_comprehensive_test" value="1" required>
-                        <label for="q15_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q15_0" name="q15_comprehensive_test" value="0" required>
-                        <label for="q15_0">۰<br>شامل حالم نمی‌شود</label>
-                    </div>
-                </div>
-            </div>
 
-            <div class="question form-group">
-                <strong>۱۶. میزان رضایت شما از "گزارش پیشرفت و تحلیل عملکرد" چقدر است؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q16_5" name="q16_progress_report" value="5" required>
-                        <label for="q16_5">۵<br>کاملاً راضی</label>
+                    <div class="question form-group">
+                        <strong>۲۰. میزان رضایت شما از "کارگاه‌های مهارتی" چقدر است؟ <span class="required">*</span></strong>
+                        <div class="scale-options">
+                            <div class="scale-option">
+                                <input type="radio" id="q20_5" name="q20_skill_workshops" value="5" required>
+                                <label for="q20_5">۵<br>کاملاً راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q20_4" name="q20_skill_workshops" value="4" required>
+                                <label for="q20_4">۴<br>راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q20_3" name="q20_skill_workshops" value="3" required>
+                                <label for="q20_3">۳<br>متوسط</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q20_2" name="q20_skill_workshops" value="2" required>
+                                <label for="q20_2">۲<br>ناراضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q20_1" name="q20_skill_workshops" value="1" required>
+                                <label for="q20_1">۱<br>کاملاً ناراضی</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q16_4" name="q16_progress_report" value="4" required>
-                        <label for="q16_4">۴<br>راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q16_3" name="q16_progress_report" value="3" required>
-                        <label for="q16_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q16_2" name="q16_progress_report" value="2" required>
-                        <label for="q16_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q16_1" name="q16_progress_report" value="1" required>
-                        <label for="q16_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q16_0" name="q16_progress_report" value="0" required>
-                        <label for="q16_0">۰<br>شامل حالم نمی‌شود</label>
-                    </div>
-                </div>
-            </div>
 
-            <div class="question form-group">
-                <strong>۱۷. میزان رضایت شما از "هدفگذاری و جمع بندی اختصاصی" چقدر است؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q17_5" name="q17_goal_setting" value="5" required>
-                        <label for="q17_5">۵<br>کاملاً راضی</label>
+                    <div class="question form-group">
+                        <strong>۲۱. (ویژه والدین در دوره فوق پیشرفته) میزان رضایت شما از "همایش‌های ویژه والدین" چقدر است؟ <span class="required">*</span></strong>
+                        <div class="scale-options">
+                            <div class="scale-option">
+                                <input type="radio" id="q21_5" name="q21_parent_conferences" value="5" required>
+                                <label for="q21_5">۵<br>کاملاً راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q21_4" name="q21_parent_conferences" value="4" required>
+                                <label for="q21_4">۴<br>راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q21_3" name="q21_parent_conferences" value="3" required>
+                                <label for="q21_3">۳<br>متوسط</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q21_2" name="q21_parent_conferences" value="2" required>
+                                <label for="q21_2">۲<br>ناراضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q21_1" name="q21_parent_conferences" value="1" required>
+                                <label for="q21_1">۱<br>کاملاً ناراضی</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q17_4" name="q17_goal_setting" value="4" required>
-                        <label for="q17_4">۴<br>راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q17_3" name="q17_goal_setting" value="3" required>
-                        <label for="q17_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q17_2" name="q17_goal_setting" value="2" required>
-                        <label for="q17_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q17_1" name="q17_goal_setting" value="1" required>
-                        <label for="q17_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q17_0" name="q17_goal_setting" value="0" required>
-                        <label for="q17_0">۰<br>شامل حالم نمی‌شود</label>
-                    </div>
-                </div>
-            </div>
 
-            <h3>ج) خدمات ویژه دوره "فوق پیشرفته":</h3>
-            <em>اگر در دوره مقدماتی یا پیشرفته بوده‌اید، لطفاً گزینه "شامل حال من نمی‌شود" را انتخاب کنید.</em>
-
-            <div class="question form-group">
-                <strong>۱۸. میزان رضایت شما از "تست‌های روانشناختی" (در صورت ارجاع و انجام) چقدر است؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q18_5" name="q18_psychological_tests" value="5" required>
-                        <label for="q18_5">۵<br>کاملاً راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q18_4" name="q18_psychological_tests" value="4" required>
-                        <label for="q18_4">۴<br>راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q18_3" name="q18_psychological_tests" value="3" required>
-                        <label for="q18_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q18_2" name="q18_psychological_tests" value="2" required>
-                        <label for="q18_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q18_1" name="q18_psychological_tests" value="1" required>
-                        <label for="q18_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q18_0" name="q18_psychological_tests" value="0" required>
-                        <label for="q18_0">۰<br>شامل حالم نمی‌شود</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="question form-group">
-                <strong>۱۹. میزان رضایت شما از "کارگاه‌های آموزشی" چقدر است؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q19_5" name="q19_educational_workshops" value="5" required>
-                        <label for="q19_5">۵<br>کاملاً راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q19_4" name="q19_educational_workshops" value="4" required>
-                        <label for="q19_4">۴<br>راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q19_3" name="q19_educational_workshops" value="3" required>
-                        <label for="q19_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q19_2" name="q19_educational_workshops" value="2" required>
-                        <label for="q19_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q19_1" name="q19_educational_workshops" value="1" required>
-                        <label for="q19_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q19_0" name="q19_educational_workshops" value="0" required>
-                        <label for="q19_0">۰<br>شامل حالم نمی‌شود</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="question form-group">
-                <strong>۲۰. میزان رضایت شما از "کارگاه‌های مهارتی" چقدر است؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q20_5" name="q20_skill_workshops" value="5" required>
-                        <label for="q20_5">۵<br>کاملاً راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q20_4" name="q20_skill_workshops" value="4" required>
-                        <label for="q20_4">۴<br>راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q20_3" name="q20_skill_workshops" value="3" required>
-                        <label for="q20_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q20_2" name="q20_skill_workshops" value="2" required>
-                        <label for="q20_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q20_1" name="q20_skill_workshops" value="1" required>
-                        <label for="q20_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q20_0" name="q20_skill_workshops" value="0" required>
-                        <label for="q20_0">۰<br>شامل حالم نمی‌شود</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="question form-group">
-                <strong>۲۱. (ویژه والدین در دوره فوق پیشرفته) میزان رضایت شما از "همایش‌های ویژه والدین" چقدر است؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q21_5" name="q21_parent_conferences" value="5" required>
-                        <label for="q21_5">۵<br>کاملاً راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q21_4" name="q21_parent_conferences" value="4" required>
-                        <label for="q21_4">۴<br>راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q21_3" name="q21_parent_conferences" value="3" required>
-                        <label for="q21_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q21_2" name="q21_parent_conferences" value="2" required>
-                        <label for="q21_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q21_1" name="q21_parent_conferences" value="1" required>
-                        <label for="q21_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q21_0" name="q21_parent_conferences" value="0" required>
-                        <label for="q21_0">۰<br>شامل حالم نمی‌شود</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="question form-group">
-                <strong>۲۲. (در صورت ارجاع به روانشناس) میزان رضایت شما از جلسات تخصصی با "روانشناس" چقدر است؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q22_5" name="q22_psychologist_sessions" value="5" required>
-                        <label for="q22_5">۵<br>کاملاً راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q22_4" name="q22_psychologist_sessions" value="4" required>
-                        <label for="q22_4">۴<br>راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q22_3" name="q22_psychologist_sessions" value="3" required>
-                        <label for="q22_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q22_2" name="q22_psychologist_sessions" value="2" required>
-                        <label for="q22_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q22_1" name="q22_psychologist_sessions" value="1" required>
-                        <label for="q22_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q22_0" name="q22_psychologist_sessions" value="0" required>
-                        <label for="q22_0">۰<br>شامل حالم نمی‌شود</label>
+                    <div class="question form-group">
+                        <strong>۲۲. (در صورت ارجاع به روانشناس) میزان رضایت شما از جلسات تخصصی با "روانشناس" چقدر است؟ <span class="required">*</span></strong>
+                        <div class="scale-options">
+                            <div class="scale-option">
+                                <input type="radio" id="q22_5" name="q22_psychologist_sessions" value="5" required>
+                                <label for="q22_5">۵<br>کاملاً راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q22_4" name="q22_psychologist_sessions" value="4" required>
+                                <label for="q22_4">۴<br>راضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q22_3" name="q22_psychologist_sessions" value="3" required>
+                                <label for="q22_3">۳<br>متوسط</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q22_2" name="q22_psychologist_sessions" value="2" required>
+                                <label for="q22_2">۲<br>ناراضی</label>
+                            </div>
+                            <div class="scale-option">
+                                <input type="radio" id="q22_1" name="q22_psychologist_sessions" value="1" required>
+                                <label for="q22_1">۱<br>کاملاً ناراضی</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <hr>
 
-            <h2>بخش پنجم: ارزیابی کلی و بازخوردها</h2>
+            <!-- بخش پنجم: ارزیابی کلی -->
+            <div class="section" id="section-overall">
+                <h2>بخش پنجم: ارزیابی کلی و بازخوردها</h2>
 
-            <div class="question form-group">
-                <strong>۲۳. به طور کلی، میزان رضایت شما از "کل طرح مشاوره تحصیلی یکساله ۱۴۰۳" (با توجه به دوره‌ای که در آن شرکت داشتید) چقدر است؟ <span class="required">*</span></strong>
-                <div class="scale-options">
-                    <div class="scale-option">
-                        <input type="radio" id="q23_5" name="q23_overall_satisfaction" value="5" required>
-                        <label for="q23_5">۵<br>کاملاً راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q23_4" name="q23_overall_satisfaction" value="4" required>
-                        <label for="q23_4">۴<br>راضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q23_3" name="q23_overall_satisfaction" value="3" required>
-                        <label for="q23_3">۳<br>متوسط</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q23_2" name="q23_overall_satisfaction" value="2" required>
-                        <label for="q23_2">۲<br>ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q23_1" name="q23_overall_satisfaction" value="1" required>
-                        <label for="q23_1">۱<br>کاملاً ناراضی</label>
-                    </div>
-                    <div class="scale-option">
-                        <input type="radio" id="q23_0" name="q23_overall_satisfaction" value="0" required>
-                        <label for="q23_0">۰<br>شامل حالم نمی‌شود</label>
+                <div class="question form-group">
+                    <strong>۲۳. به طور کلی، میزان رضایت شما از "کل طرح مشاوره تحصیلی یکساله ۱۴۰۳" (با توجه به دوره‌ای که در آن شرکت داشتید) چقدر است؟ <span class="required">*</span></strong>
+                    <div class="scale-options">
+                        <div class="scale-option">
+                            <input type="radio" id="q23_5" name="q23_overall_satisfaction" value="5" required>
+                            <label for="q23_5">۵<br>کاملاً راضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q23_4" name="q23_overall_satisfaction" value="4" required>
+                            <label for="q23_4">۴<br>راضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q23_3" name="q23_overall_satisfaction" value="3" required>
+                            <label for="q23_3">۳<br>متوسط</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q23_2" name="q23_overall_satisfaction" value="2" required>
+                            <label for="q23_2">۲<br>ناراضی</label>
+                        </div>
+                        <div class="scale-option">
+                            <input type="radio" id="q23_1" name="q23_overall_satisfaction" value="1" required>
+                            <label for="q23_1">۱<br>کاملاً ناراضی</label>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="question form-group">
-                <strong>۲۴. به نظر شما، مهم‌ترین نقطه قوت این طرح مشاوره چه بود؟</strong>
-                <textarea name="q24_main_strength" placeholder="لطفاً نظر خود را در اینجا بنویسید..."></textarea>
-            </div>
+                <div class="question form-group">
+                    <strong>۲۴. به نظر شما، مهم‌ترین نقطه قوت این طرح مشاوره چه بود؟</strong>
+                    <textarea name="q24_main_strength" placeholder="لطفاً نظر خود را در اینجا بنویسید..."></textarea>
+                </div>
 
-            <div class="question form-group">
-                <strong>۲۵. به نظر شما، کدام بخش یا خدمت نیاز به بهبود بیشتری دارد؟ لطفاً توضیح دهید.</strong>
-                <textarea name="q25_improvement_needed" placeholder="لطفاً نظر خود را در اینجا بنویسید..."></textarea>
-            </div>
+                <div class="question form-group">
+                    <strong>۲۵. به نظر شما، کدام بخش یا خدمت نیاز به بهبود بیشتری دارد؟ لطفاً توضیح دهید.</strong>
+                    <textarea name="q25_improvement_needed" placeholder="لطفاً نظر خود را در اینجا بنویسید..."></textarea>
+                </div>
 
-            <div class="question form-group">
-                <strong>۲۶. آیا این طرح مشاوره را به دیگران توصیه می‌کنید؟ <span class="required">*</span></strong>
-                <div class="radio-group">
-                    <div class="radio-item">
-                        <input type="radio" id="recommendation_yes" name="q26_recommendation" value="بله، حتماً" required>
-                        <label for="recommendation_yes">الف) بله، حتماً</label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="recommendation_probably" name="q26_recommendation" value="احتمالاً توصیه می‌کنم" required>
-                        <label for="recommendation_probably">ب) احتمالاً توصیه می‌کنم</label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="recommendation_neutral" name="q26_recommendation" value="نظری ندارم" required>
-                        <label for="recommendation_neutral">ج) نظری ندارم</label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="recommendation_probably_not" name="q26_recommendation" value="احتمالاً توصیه نمی‌کنم" required>
-                        <label for="recommendation_probably_not">د) احتمالاً توصیه نمی‌کنم</label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="recommendation_no" name="q26_recommendation" value="خیر، اصلاً" required>
-                        <label for="recommendation_no">ه) خیر، اصلاً</label>
+                <div class="question form-group">
+                    <strong>۲۶. آیا این طرح مشاوره را به دیگران توصیه می‌کنید؟ <span class="required">*</span></strong>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="recommendation_yes" name="q26_recommendation" value="بله، حتماً" required>
+                            <label for="recommendation_yes">الف) بله، حتماً</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="recommendation_probably" name="q26_recommendation" value="احتمالاً توصیه می‌کنم" required>
+                            <label for="recommendation_probably">ب) احتمالاً توصیه می‌کنم</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="recommendation_neutral" name="q26_recommendation" value="نظری ندارم" required>
+                            <label for="recommendation_neutral">ج) نظری ندارم</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="recommendation_probably_not" name="q26_recommendation" value="احتمالاً توصیه نمی‌کنم" required>
+                            <label for="recommendation_probably_not">د) احتمالاً توصیه نمی‌کنم</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="recommendation_no" name="q26_recommendation" value="خیر، اصلاً" required>
+                            <label for="recommendation_no">ه) خیر، اصلاً</label>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="question form-group">
-                <strong>۲۷. اگر پیشنهاد یا نظر دیگری دارید، لطفاً در این قسمت بیان کنید:</strong>
-                <textarea name="q27_additional_comments" placeholder="لطفاً نظر خود را در اینجا بنویسید..."></textarea>
+                <div class="question form-group">
+                    <strong>۲۷. اگر پیشنهاد یا نظر دیگری دارید، لطفاً در این قسمت بیان کنید:</strong>
+                    <textarea name="q27_additional_comments" placeholder="لطفاً نظر خود را در اینجا بنویسید..."></textarea>
+                </div>
             </div>
 
             <hr>
@@ -965,34 +916,100 @@
     </div>
 
     <script>
+        // Course descriptions
+        const courseDescriptions = {
+            'مقدماتی': 'شما در دوره مقدماتی شرکت داشته‌اید. این فرم شامل سوالاتی است که مخصوص تجربه شما در این دوره طراحی شده است.',
+            'پیشرفته': 'شما در دوره پیشرفته شرکت داشته‌اید. این فرم شامل سوالات اضافه‌ای برای ارزیابی خدمات پیشرفته‌تر است.',
+            'فوق پیشرفته': 'شما در دوره فوق پیشرفته شرکت داشته‌اید. این فرم شامل کامل‌ترین مجموعه سوالات برای ارزیابی همه خدمات است.'
+        };
+
+        // Show/hide sections based on course selection
+        function updateFormSections(courseType) {
+            const courseInfo = document.getElementById('courseInfo');
+            const courseDescription = document.getElementById('courseDescription');
+            const advancedServices = document.getElementById('advanced-services');
+            const expertServices = document.getElementById('expert-services');
+            const basicNote = document.querySelector('.basic-note');
+
+            // Show course info
+            courseInfo.classList.remove('hidden');
+            courseDescription.textContent = courseDescriptions[courseType];
+
+            // Reset all sections to visible first
+            advancedServices.classList.remove('hidden');
+            expertServices.classList.remove('hidden');
+            
+            // Disable required validation for hidden sections
+            function setRequiredForSection(sectionId, required) {
+                const section = document.getElementById(sectionId);
+                const inputs = section.querySelectorAll('input[type="radio"]');
+                inputs.forEach(input => {
+                    if (required) {
+                        input.setAttribute('required', 'required');
+                    } else {
+                        input.removeAttribute('required');
+                        input.checked = false; // Clear any existing selections
+                    }
+                });
+            }
+
+            if (courseType === 'مقدماتی') {
+                // Hide advanced and expert services for basic course
+                advancedServices.classList.add('hidden');
+                expertServices.classList.add('hidden');
+                setRequiredForSection('advanced-services', false);
+                setRequiredForSection('expert-services', false);
+                
+                // Show note for question 10
+                if (basicNote) basicNote.style.display = 'block';
+            } else if (courseType === 'پیشرفته') {
+                // Show advanced services, hide expert services
+                advancedServices.classList.remove('hidden');
+                expertServices.classList.add('hidden');
+                setRequiredForSection('advanced-services', true);
+                setRequiredForSection('expert-services', false);
+                
+                // Hide note for question 10
+                if (basicNote) basicNote.style.display = 'none';
+            } else if (courseType === 'فوق پیشرفته') {
+                // Show all services
+                advancedServices.classList.remove('hidden');
+                expertServices.classList.remove('hidden');
+                setRequiredForSection('advanced-services', true);
+                setRequiredForSection('expert-services', true);
+                
+                // Hide note for question 10
+                if (basicNote) basicNote.style.display = 'none';
+            }
+
+            updateProgressBar();
+        }
+
         // Progress bar functionality
         function updateProgressBar() {
             const form = document.getElementById('surveyForm');
-            const requiredInputs = form.querySelectorAll('input[required], textarea[required]');
-            const totalRequired = requiredInputs.length;
+            const visibleSections = form.querySelectorAll('.section:not(.hidden)');
+            let totalRequired = 0;
             let completedRequired = 0;
 
-            requiredInputs.forEach(input => {
-                if (input.type === 'radio') {
-                    const radioGroup = form.querySelectorAll(`input[name="${input.name}"]`);
-                    if ([...radioGroup].some(radio => radio.checked)) {
-                        completedRequired++;
-                    }
-                } else if (input.value.trim() !== '') {
-                    completedRequired++;
-                }
-            });
-
-            // Only count each radio group once
+            // Count all visible required radio groups
             const radioGroups = new Set();
-            requiredInputs.forEach(input => {
-                if (input.type === 'radio') {
-                    radioGroups.add(input.name);
-                }
+            visibleSections.forEach(section => {
+                const requiredInputs = section.querySelectorAll('input[required]');
+                requiredInputs.forEach(input => {
+                    if (input.type === 'radio') {
+                        radioGroups.add(input.name);
+                    }
+                });
             });
 
-            // Recalculate for radio groups
-            completedRequired = 0;
+            // Add basic info radio groups
+            radioGroups.add('participant_type');
+            radioGroups.add('course_type');
+
+            totalRequired = radioGroups.size;
+
+            // Check completed radio groups
             radioGroups.forEach(groupName => {
                 const radioGroup = form.querySelectorAll(`input[name="${groupName}"]`);
                 if ([...radioGroup].some(radio => radio.checked)) {
@@ -1000,15 +1017,7 @@
                 }
             });
 
-            // Add non-radio required fields
-            const nonRadioRequired = form.querySelectorAll('textarea[required]');
-            nonRadioRequired.forEach(textarea => {
-                if (textarea.value.trim() !== '') {
-                    completedRequired++;
-                }
-            });
-
-            const progressPercentage = (completedRequired / radioGroups.size) * 100;
+            const progressPercentage = totalRequired > 0 ? (completedRequired / totalRequired) * 100 : 0;
             document.getElementById('progressFill').style.width = progressPercentage + '%';
         }
 
@@ -1016,17 +1025,21 @@
         document.getElementById('surveyForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Check if all required fields are filled
-            const requiredInputs = this.querySelectorAll('input[required]');
+            // Check if all visible required fields are filled
+            const visibleRequiredInputs = this.querySelectorAll('.section:not(.hidden) input[required]');
             let allFilled = true;
             
-            // Get all radio group names
+            // Get all visible radio group names
             const radioGroups = new Set();
-            requiredInputs.forEach(input => {
+            visibleRequiredInputs.forEach(input => {
                 if (input.type === 'radio') {
                     radioGroups.add(input.name);
                 }
             });
+
+            // Add basic required groups
+            radioGroups.add('participant_type');
+            radioGroups.add('course_type');
 
             // Check if each radio group has a selection
             radioGroups.forEach(groupName => {
@@ -1045,8 +1058,15 @@
             this.submit();
         });
 
+        // Course selection change handler
+        document.addEventListener('change', function(e) {
+            if (e.target.name === 'course_type') {
+                updateFormSections(e.target.value);
+            }
+            updateProgressBar();
+        });
+
         // Add event listeners for progress tracking
-        document.addEventListener('change', updateProgressBar);
         document.addEventListener('input', updateProgressBar);
 
         // Initial progress update
@@ -1059,9 +1079,9 @@
                 radio.addEventListener('change', function() {
                     // Auto-scroll to next question after a brief delay
                     setTimeout(() => {
-                        const currentQuestion = this.closest('.question');
+                        const currentQuestion = this.closest('.question, .form-group');
                         const nextQuestion = currentQuestion.nextElementSibling;
-                        if (nextQuestion && nextQuestion.classList.contains('question')) {
+                        if (nextQuestion && (nextQuestion.classList.contains('question') || nextQuestion.classList.contains('form-group'))) {
                             nextQuestion.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         }
                     }, 500);
