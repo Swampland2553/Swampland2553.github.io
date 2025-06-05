@@ -187,7 +187,7 @@
 </head>
 <body>
     <div class="container">
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="surveyForm">
+        <form action="https://formspree.io/f/xpwrwnnd" method="POST" id="surveyForm">
             <h1>ارزیابی رضایتمندی از خدمات مشاوره تحصیلی یکساله ۱۴۰۳</h1>
 
             <div class="progress-bar">
@@ -1041,16 +1041,8 @@
                 return;
             }
 
-            // If using Formspree, uncomment the following lines and replace YOUR_FORM_ID
-            // this.action = 'https://formspree.io/f/YOUR_FORM_ID';
-            // this.submit();
-            
-            // For demo purposes, show success message
-            alert('نظرسنجی شما با موفقیت ارسال شد! از همکاری شما متشکریم.');
-            
-            // Reset form for demo
-            this.reset();
-            updateProgressBar();
+            // Submit to Formspree
+            this.submit();
         });
 
         // Add event listeners for progress tracking
