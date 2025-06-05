@@ -61,6 +61,9 @@
         .section.hidden {
             display: none;
         }
+        .subsection.hidden {
+            display: none;
+        }
         .options {
             margin: 10px 0;
             padding-right: 20px;
@@ -935,11 +938,11 @@
             courseInfo.classList.remove('hidden');
             courseDescription.textContent = courseDescriptions[courseType];
 
-            // Reset all sections to visible first
-            advancedServices.classList.remove('hidden');
-            expertServices.classList.remove('hidden');
+            // Reset all subsections to visible first
+            if (advancedServices) advancedServices.classList.remove('hidden');
+            if (expertServices) expertServices.classList.remove('hidden');
             
-            // Function to set required validation for sections
+            // Function to set required validation for subsections
             function setRequiredForSection(sectionId, required) {
                 const section = document.getElementById(sectionId);
                 if (section) {
@@ -957,8 +960,8 @@
 
             if (courseType === 'مقدماتی') {
                 // Hide advanced and expert services for basic course
-                advancedServices.classList.add('hidden');
-                expertServices.classList.add('hidden');
+                if (advancedServices) advancedServices.classList.add('hidden');
+                if (expertServices) expertServices.classList.add('hidden');
                 setRequiredForSection('advanced-services', false);
                 setRequiredForSection('expert-services', false);
                 
@@ -966,8 +969,8 @@
                 if (basicNote) basicNote.style.display = 'block';
             } else if (courseType === 'پیشرفته') {
                 // Show advanced services, hide expert services
-                advancedServices.classList.remove('hidden');
-                expertServices.classList.add('hidden');
+                if (advancedServices) advancedServices.classList.remove('hidden');
+                if (expertServices) expertServices.classList.add('hidden');
                 setRequiredForSection('advanced-services', true);
                 setRequiredForSection('expert-services', false);
                 
@@ -975,8 +978,8 @@
                 if (basicNote) basicNote.style.display = 'none';
             } else if (courseType === 'فوق پیشرفته') {
                 // Show all services
-                advancedServices.classList.remove('hidden');
-                expertServices.classList.remove('hidden');
+                if (advancedServices) advancedServices.classList.remove('hidden');
+                if (expertServices) expertServices.classList.remove('hidden');
                 setRequiredForSection('advanced-services', true);
                 setRequiredForSection('expert-services', true);
                 
